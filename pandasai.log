@@ -1,0 +1,770 @@
+2025-08-30 12:08:20 [INFO] Question: What are the most common review languages ?
+2025-08-30 12:08:20 [INFO] Running PandasAI with langchain_chat-google-generative-ai LLM...
+2025-08-30 12:08:20 [INFO] Prompt ID: 44c47e83-6081-49bb-88e7-6c06e004296d
+2025-08-30 12:08:20 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-08-30 12:08:20 [INFO] Executing Step 0: ValidatePipelineInput
+2025-08-30 12:08:20 [INFO] Executing Step 1: CacheLookup
+2025-08-30 12:08:20 [INFO] Executing Step 2: PromptGeneration
+2025-08-30 12:08:20 [INFO] Using prompt: <dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+2054,2253928,Discord,Music & Audio,Bête petit tâche matière.,de,,2023-10-20 14:49:42,True,iOS,252,57.0,Nigeria,Female,2.4.48
+102,6861231,Airbnb,Video Players & Editors,,it,3.0,2023-12-04 14:23:42,True,Android Tablet,95,58.0,Australia,,7.0.88.5379
+1108,6619606,Amazon,Social Networking,Hold decade investment operation long pass. Quickly with matter.,fr,3.1,2024-03-28 19:03:24,False,iPad,368,20.0,,Non-binary,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What are the most common review languages ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-08-30 12:08:20 [INFO] Executing Step 3: CodeGenerator
+2025-08-30 12:08:22 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+2054,2253928,Discord,Music & Audio,Bête petit tâche matière.,de,,2023-10-20 14:49:42,True,iOS,252,57.0,Nigeria,Female,2.4.48
+102,6861231,Airbnb,Video Players & Editors,,it,3.0,2023-12-04 14:23:42,True,Android Tablet,95,58.0,Australia,,7.0.88.5379
+1108,6619606,Amazon,Social Networking,Hold decade investment operation long pass. Quickly with matter.,fr,3.1,2024-03-28 19:03:24,False,iPad,368,20.0,,Non-binary,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What are the most common review languages ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-08-30 12:08:22 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs)
+language_counts = df['review_language'].value_counts()
+
+# Create a bar chart of the most common review languages
+plt.figure(figsize=(10, 6))
+language_counts.plot(kind='bar')
+plt.title('Most Common Review Languages')
+plt.xlabel('Language')
+plt.ylabel('Number of Reviews')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.savefig('language_chart.png')
+
+
+# Declare result var: 
+result = {
+    "type": "plot",
+    "value": "language_chart.png"
+}
+            ```
+            
+2025-08-30 12:08:22 [INFO] Executing Step 4: CachePopulation
+2025-08-30 12:08:22 [INFO] Executing Step 5: CodeCleaning
+2025-08-30 12:08:22 [INFO] Saving charts to static/charts/44c47e83-6081-49bb-88e7-6c06e004296d.png
+2025-08-30 12:08:22 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+language_counts = df['review_language'].value_counts()
+plt.figure(figsize=(10, 6))
+language_counts.plot(kind='bar')
+plt.title('Most Common Review Languages')
+plt.xlabel('Language')
+plt.ylabel('Number of Reviews')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.savefig('static/charts/44c47e83-6081-49bb-88e7-6c06e004296d.png')
+result = {'type': 'plot', 'value': 'static/charts/44c47e83-6081-49bb-88e7-6c06e004296d.png'}
+        ```
+2025-08-30 12:08:22 [INFO] Executing Step 6: CodeExecution
+2025-08-30 12:08:23 [INFO] Executing Step 7: ResultValidation
+2025-08-30 12:08:23 [INFO] Answer: {'type': 'plot', 'value': 'static/charts/44c47e83-6081-49bb-88e7-6c06e004296d.png'}
+2025-08-30 12:08:23 [INFO] Executing Step 8: ResultParsing
+2025-08-30 12:08:23 [INFO] 127.0.0.1 - - [30/Aug/2025 12:08:23] "[32mPOST /chat HTTP/1.1[0m" 302 -
+2025-08-30 12:08:23 [INFO] 127.0.0.1 - - [30/Aug/2025 12:08:23] "GET / HTTP/1.1" 200 -
+2025-08-30 12:08:24 [INFO] 127.0.0.1 - - [30/Aug/2025 12:08:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-30 12:08:24 [INFO] 127.0.0.1 - - [30/Aug/2025 12:08:24] "GET /static/charts/44c47e83-6081-49bb-88e7-6c06e004296d.png HTTP/1.1" 200 -
+2025-08-30 12:09:35 [INFO] Question: what is the most common device type ?
+2025-08-30 12:09:35 [INFO] Running PandasAI with langchain_chat-google-generative-ai LLM...
+2025-08-30 12:09:35 [INFO] Prompt ID: 7cccdee3-b64c-4a2a-8338-0fcb0fd0bc33
+2025-08-30 12:09:35 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-08-30 12:09:35 [INFO] Executing Step 0: ValidatePipelineInput
+2025-08-30 12:09:35 [INFO] Executing Step 1: CacheLookup
+2025-08-30 12:09:35 [INFO] Executing Step 2: PromptGeneration
+2025-08-30 12:09:35 [INFO] Using prompt: <dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1130,8879300,Grammarly,Health & Fitness,,pl,2.2,2024-06-24 10:30:33,True,Android Tablet,394,14.0,United Kingdom,,1.7.17
+1197,1960421,Uber,Music & Audio,Quaerat distinctio necessitatibus. Tempore natus harum nobis minima aut. Quaerat veniam rem perferendis nemo.,fi,2.1,2025-05-03 00:57:57,True,iPad,838,20.0,,Female,
+2351,7012261,Lyft,Communication,Minus fuga officiis distinctio fugit suscipit consectetur quia. Aliquam voluptas sunt repellendus.,ru,,2023-09-20 15:48:14,False,Windows Phone,555,74.0,Japan,Prefer not to say,12.8.53-beta
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the most common device type ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-08-30 12:09:35 [INFO] Executing Step 3: CodeGenerator
+2025-08-30 12:09:39 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1130,8879300,Grammarly,Health & Fitness,,pl,2.2,2024-06-24 10:30:33,True,Android Tablet,394,14.0,United Kingdom,,1.7.17
+1197,1960421,Uber,Music & Audio,Quaerat distinctio necessitatibus. Tempore natus harum nobis minima aut. Quaerat veniam rem perferendis nemo.,fi,2.1,2025-05-03 00:57:57,True,iPad,838,20.0,,Female,
+2351,7012261,Lyft,Communication,Minus fuga officiis distinctio fugit suscipit consectetur quia. Aliquam voluptas sunt repellendus.,ru,,2023-09-20 15:48:14,False,Windows Phone,555,74.0,Japan,Prefer not to say,12.8.53-beta
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ what is the most common device type ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-08-30 12:09:39 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+dfs = [{'review_id': [1130, 1197, 2351], 'user_id': [8879300, 1960421, 7012261], 'app_name': ['Grammarly', 'Uber', 'Lyft'], 'app_category': ['Health & Fitness', 'Music & Audio', 'Communication'], 'review_text': ['', 'Quaerat distinctio necessitatibus. Tempore natus harum nobis minima aut. Quaerat veniam rem perferendis nemo.', 'Minus fuga officiis distinctio fugit suscipit consectetur quia. Aliquam voluptas sunt repellendus.'], 'review_language': ['pl', 'fi', 'ru'], 'rating': [2.2, 2.1, None], 'review_date': ['2024-06-24 10:30:33', '2025-05-03 00:57:57', '2023-09-20 15:48:14'], 'verified_purchase': [True, True, False], 'device_type': ['Android Tablet', 'iPad', 'Windows Phone'], 'num_helpful_votes': [394, 838, 555], 'user_age': [14.0, 20.0, 74.0], 'user_country': ['United Kingdom', None, 'Japan'], 'user_gender': [None, 'Female', 'Prefer not to say'], 'app_version': ['1.7.17', None, '12.8.53-beta']}]
+df = pd.DataFrame(dfs[0])
+
+device_counts = df['device_type'].value_counts()
+most_common_device = device_counts.index[0]
+
+# Declare result var: 
+result = { "type": "string", "value": f"The most common device type is: {most_common_device}" }
+            ```
+            
+2025-08-30 12:09:39 [INFO] Executing Step 4: CachePopulation
+2025-08-30 12:09:39 [INFO] Executing Step 5: CodeCleaning
+2025-08-30 12:09:39 [INFO] 
+Code running:
+```
+df = pd.DataFrame(dfs[0])
+device_counts = df['device_type'].value_counts()
+most_common_device = device_counts.index[0]
+result = {'type': 'string', 'value': f'The most common device type is: {most_common_device}'}
+        ```
+2025-08-30 12:09:39 [INFO] Executing Step 6: CodeExecution
+2025-08-30 12:09:39 [INFO] Executing Step 7: ResultValidation
+2025-08-30 12:09:39 [INFO] Answer: {'type': 'string', 'value': 'The most common device type is: Windows Phone'}
+2025-08-30 12:09:39 [INFO] Executing Step 8: ResultParsing
+2025-08-30 12:09:39 [INFO] 127.0.0.1 - - [30/Aug/2025 12:09:39] "[32mPOST /chat HTTP/1.1[0m" 302 -
+2025-08-30 12:09:39 [INFO] 127.0.0.1 - - [30/Aug/2025 12:09:39] "GET / HTTP/1.1" 200 -
+2025-08-30 12:09:39 [INFO] 127.0.0.1 - - [30/Aug/2025 12:09:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-30 12:09:39 [INFO] 127.0.0.1 - - [30/Aug/2025 12:09:39] "[36mGET /static/charts/44c47e83-6081-49bb-88e7-6c06e004296d.png HTTP/1.1[0m" 304 -
+2025-08-30 12:10:14 [INFO]  * Detected change in '/home/azar/Desktop/tiktok2.0/day4/4/csv-chat-app/app.py', reloading
+2025-08-30 12:10:14 [INFO]  * Detected change in '/home/azar/Desktop/tiktok2.0/day4/4/csv-chat-app/app.py', reloading
+2025-08-30 12:10:14 [INFO]  * Detected change in '/home/azar/Desktop/tiktok2.0/day4/4/csv-chat-app/app.py', reloading
+2025-08-30 12:10:34 [INFO] Question: What are the most common review languages ? 
+2025-08-30 12:10:35 [INFO] Running PandasAI with langchain_chat-google-generative-ai LLM...
+2025-08-30 12:10:35 [INFO] Prompt ID: 4b768c2e-bb9a-4c0d-b09c-a06d12e16e69
+2025-08-30 12:10:35 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-08-30 12:10:35 [INFO] Executing Step 0: ValidatePipelineInput
+2025-08-30 12:10:35 [INFO] Executing Step 1: CacheLookup
+2025-08-30 12:10:35 [INFO] Executing Step 2: PromptGeneration
+2025-08-30 12:10:35 [INFO] Using prompt: <dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1464,4086941,Duolingo,Entertainment,Sint doloremque praesentium hic et. Illo ipsa distinctio cupiditate consequuntur nam. Saepe culpa voluptatum pariatur consequatur asperiores.,tr,1.2,2023-09-03 03:11:57,False,iPad,827,21.0,,Non-binary,
+1371,4852935,Telegram,News & Magazines,,es,,2023-08-28 23:04:25,True,Windows Phone,1112,25.0,Japan,,1.0.52-beta
+1033,3165690,Canva,Dating,Consequatur fugit fugit. Quisquam nesciunt voluptates facere.,pt,1.3,2024-02-21 11:13:31,False,Android,818,67.0,Vietnam,Male,13.4.23
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What are the most common review languages ? 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-08-30 12:10:35 [INFO] Executing Step 3: CodeGenerator
+2025-08-30 12:10:37 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1464,4086941,Duolingo,Entertainment,Sint doloremque praesentium hic et. Illo ipsa distinctio cupiditate consequuntur nam. Saepe culpa voluptatum pariatur consequatur asperiores.,tr,1.2,2023-09-03 03:11:57,False,iPad,827,21.0,,Non-binary,
+1371,4852935,Telegram,News & Magazines,,es,,2023-08-28 23:04:25,True,Windows Phone,1112,25.0,Japan,,1.0.52-beta
+1033,3165690,Canva,Dating,Consequatur fugit fugit. Quisquam nesciunt voluptates facere.,pt,1.3,2024-02-21 11:13:31,False,Android,818,67.0,Vietnam,Male,13.4.23
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What are the most common review languages ? 
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-08-30 12:10:37 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = dfs[0]
+language_counts = df['review_language'].value_counts()
+most_common_languages = language_counts.head(5) # Get the top 5 most common languages
+
+# Create a bar chart (optional visualization)
+plt.figure(figsize=(10, 6))
+most_common_languages.plot(kind='bar')
+plt.title('Most Common Review Languages')
+plt.xlabel('Language')
+plt.ylabel('Number of Reviews')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.savefig('language_chart.png')
+
+
+# Declare result var: 
+result = {
+    "type": "dataframe", 
+    "value": most_common_languages.reset_index().rename(columns={'index': 'Language', 'review_language': 'Count'})
+}
+            ```
+            
+2025-08-30 12:10:37 [INFO] Executing Step 4: CachePopulation
+2025-08-30 12:10:37 [INFO] Executing Step 5: CodeCleaning
+2025-08-30 12:10:37 [INFO] Saving charts to static/charts/4b768c2e-bb9a-4c0d-b09c-a06d12e16e69.png
+2025-08-30 12:10:37 [INFO] 
+Code running:
+```
+df = dfs[0]
+language_counts = df['review_language'].value_counts()
+most_common_languages = language_counts.head(5)
+plt.figure(figsize=(10, 6))
+most_common_languages.plot(kind='bar')
+plt.title('Most Common Review Languages')
+plt.xlabel('Language')
+plt.ylabel('Number of Reviews')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.savefig('static/charts/4b768c2e-bb9a-4c0d-b09c-a06d12e16e69.png')
+result = {'type': 'dataframe', 'value': most_common_languages.reset_index().rename(columns={'index': 'Language', 'review_language': 'Count'})}
+        ```
+2025-08-30 12:10:37 [INFO] Executing Step 6: CodeExecution
+2025-08-30 12:10:37 [INFO] Executing Step 7: ResultValidation
+2025-08-30 12:10:37 [INFO] Answer: {'type': 'dataframe', 'value':   Language  Count
+0       ru    134
+1       pl    122
+2       es    119
+3       nl    116
+4       tl    114}
+2025-08-30 12:10:37 [INFO] Executing Step 8: ResultParsing
+2025-08-30 12:10:37 [INFO] 127.0.0.1 - - [30/Aug/2025 12:10:37] "[32mPOST /chat HTTP/1.1[0m" 302 -
+2025-08-30 12:10:37 [INFO] 127.0.0.1 - - [30/Aug/2025 12:10:37] "GET / HTTP/1.1" 200 -
+2025-08-30 12:10:37 [INFO] 127.0.0.1 - - [30/Aug/2025 12:10:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-30 12:10:56 [INFO] Question: could you make me a pie chart about the most common app names ?
+2025-08-30 12:10:56 [INFO] Running PandasAI with langchain_chat-google-generative-ai LLM...
+2025-08-30 12:10:56 [INFO] Prompt ID: b3be4298-bea7-45d9-969b-603de96a424a
+2025-08-30 12:10:56 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-08-30 12:10:56 [INFO] Executing Step 0: ValidatePipelineInput
+2025-08-30 12:10:56 [INFO] Executing Step 1: CacheLookup
+2025-08-30 12:10:56 [INFO] Executing Step 2: PromptGeneration
+2025-08-30 12:10:56 [INFO] Using prompt: <dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1779,4932995,Telegram,Navigation,Earum expedita exercitationem necessitatibus possimus. Ut at ullam delectus assumenda et occaecati. Quisquam ratione dolor.,th,,2023-12-23 18:51:19,True,Windows Phone,825,26.0,Germany,,1.9.44
+787,7364954,Khan Academy,Photography,,da,1.0,2025-06-17 04:37:21,False,iPad,41,51.0,Mexico,Prefer not to say,v6.0.83
+1461,8746691,OneDrive,News & Magazines,Husband at tree note responsibility defense.,es,2.2,2024-08-09 17:13:37,False,Android Tablet,432,48.0,,Female,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ could you make me a pie chart about the most common app names ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-08-30 12:10:56 [INFO] Executing Step 3: CodeGenerator
+2025-08-30 12:10:58 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1779,4932995,Telegram,Navigation,Earum expedita exercitationem necessitatibus possimus. Ut at ullam delectus assumenda et occaecati. Quisquam ratione dolor.,th,,2023-12-23 18:51:19,True,Windows Phone,825,26.0,Germany,,1.9.44
+787,7364954,Khan Academy,Photography,,da,1.0,2025-06-17 04:37:21,False,iPad,41,51.0,Mexico,Prefer not to say,v6.0.83
+1461,8746691,OneDrive,News & Magazines,Husband at tree note responsibility defense.,es,2.2,2024-08-09 17:13:37,False,Android Tablet,432,48.0,,Female,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ could you make me a pie chart about the most common app names ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-08-30 12:10:58 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs)
+app_counts = df['app_name'].value_counts()
+top_10_apps = app_counts.head(10)
+
+plt.figure(figsize=(10, 8))
+plt.pie(top_10_apps, labels=top_10_apps.index, autopct='%1.1f%%', startangle=140)
+plt.title('Top 10 Most Common App Names')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.savefig('app_pie_chart.png')
+
+# Declare result var: 
+result = { "type": "plot", "value": "app_pie_chart.png" }
+            ```
+            
+2025-08-30 12:10:58 [INFO] Executing Step 4: CachePopulation
+2025-08-30 12:10:58 [INFO] Executing Step 5: CodeCleaning
+2025-08-30 12:10:58 [INFO] Saving charts to static/charts/b3be4298-bea7-45d9-969b-603de96a424a.png
+2025-08-30 12:10:58 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+app_counts = df['app_name'].value_counts()
+top_10_apps = app_counts.head(10)
+plt.figure(figsize=(10, 8))
+plt.pie(top_10_apps, labels=top_10_apps.index, autopct='%1.1f%%', startangle=140)
+plt.title('Top 10 Most Common App Names')
+plt.axis('equal')
+plt.savefig('static/charts/b3be4298-bea7-45d9-969b-603de96a424a.png')
+result = {'type': 'plot', 'value': 'static/charts/b3be4298-bea7-45d9-969b-603de96a424a.png'}
+        ```
+2025-08-30 12:10:58 [INFO] Executing Step 6: CodeExecution
+2025-08-30 12:10:58 [INFO] Executing Step 7: ResultValidation
+2025-08-30 12:10:58 [INFO] Answer: {'type': 'plot', 'value': 'static/charts/b3be4298-bea7-45d9-969b-603de96a424a.png'}
+2025-08-30 12:10:58 [INFO] Executing Step 8: ResultParsing
+2025-08-30 12:10:59 [INFO] 127.0.0.1 - - [30/Aug/2025 12:10:59] "[32mPOST /chat HTTP/1.1[0m" 302 -
+2025-08-30 12:10:59 [INFO] 127.0.0.1 - - [30/Aug/2025 12:10:59] "GET / HTTP/1.1" 200 -
+2025-08-30 12:10:59 [INFO] 127.0.0.1 - - [30/Aug/2025 12:10:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-30 12:10:59 [INFO] 127.0.0.1 - - [30/Aug/2025 12:10:59] "GET /static/charts/b3be4298-bea7-45d9-969b-603de96a424a.png HTTP/1.1" 200 -
+2025-08-30 12:11:08 [INFO]  * Detected change in '/home/azar/Desktop/tiktok2.0/day4/4/csv-chat-app/app.py', reloading
+2025-08-30 12:11:08 [INFO]  * Detected change in '/home/azar/Desktop/tiktok2.0/day4/4/csv-chat-app/app.py', reloading
+2025-08-30 12:13:16 [INFO] Question: Could you make the most common app category pie chart
+2025-08-30 12:13:16 [INFO] Running PandasAI with langchain_chat-google-generative-ai LLM...
+2025-08-30 12:13:16 [INFO] Prompt ID: 81bd3a31-2f3b-4437-be1a-6781f7eb1323
+2025-08-30 12:13:16 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-08-30 12:13:16 [INFO] Executing Step 0: ValidatePipelineInput
+2025-08-30 12:13:16 [INFO] Executing Step 1: CacheLookup
+2025-08-30 12:13:16 [INFO] Executing Step 2: PromptGeneration
+2025-08-30 12:13:16 [INFO] Using prompt: <dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1335,8215466,eBay,Productivity,Sint doloremque praesentium hic et. Illo ipsa distinctio cupiditate consequuntur nam. Saepe culpa voluptatum pariatur consequatur asperiores.,da,,2023-12-29 21:36:49,True,Android Tablet,572,35.0,Australia,Female,
+1107,9741567,Pinterest,Entertainment,Asperiores dicta quod nesciunt culpa. Ipsum et blanditiis facere.,th,4.3,2023-08-10 04:25:39,False,Windows Phone,1076,30.0,Vietnam,,6.9.33
+2090,6979264,Tinder,News & Magazines,,pl,3.9,2025-06-29 01:56:52,True,iOS,698,46.0,,Male,14.4.83-beta
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Could you make the most common app category pie chart
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-08-30 12:13:16 [INFO] Executing Step 3: CodeGenerator
+2025-08-30 12:13:18 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+1335,8215466,eBay,Productivity,Sint doloremque praesentium hic et. Illo ipsa distinctio cupiditate consequuntur nam. Saepe culpa voluptatum pariatur consequatur asperiores.,da,,2023-12-29 21:36:49,True,Android Tablet,572,35.0,Australia,Female,
+1107,9741567,Pinterest,Entertainment,Asperiores dicta quod nesciunt culpa. Ipsum et blanditiis facere.,th,4.3,2023-08-10 04:25:39,False,Windows Phone,1076,30.0,Vietnam,,6.9.33
+2090,6979264,Tinder,News & Magazines,,pl,3.9,2025-06-29 01:56:52,True,iOS,698,46.0,,Male,14.4.83-beta
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Could you make the most common app category pie chart
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-08-30 12:13:18 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+df = pd.concat(dfs)
+app_category_counts = df['app_category'].value_counts()
+
+plt.figure(figsize=(12, 8))
+plt.pie(app_category_counts, labels=app_category_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Distribution of App Categories')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.savefig('app_category_pie_chart.png')
+
+# Declare result var: 
+result = { "type": "plot", "value": "app_category_pie_chart.png" }
+            ```
+            
+2025-08-30 12:13:18 [INFO] Executing Step 4: CachePopulation
+2025-08-30 12:13:18 [INFO] Executing Step 5: CodeCleaning
+2025-08-30 12:13:18 [INFO] Saving charts to static/charts/81bd3a31-2f3b-4437-be1a-6781f7eb1323.png
+2025-08-30 12:13:18 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+app_category_counts = df['app_category'].value_counts()
+plt.figure(figsize=(12, 8))
+plt.pie(app_category_counts, labels=app_category_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Distribution of App Categories')
+plt.axis('equal')
+plt.savefig('static/charts/81bd3a31-2f3b-4437-be1a-6781f7eb1323.png')
+result = {'type': 'plot', 'value': 'static/charts/81bd3a31-2f3b-4437-be1a-6781f7eb1323.png'}
+        ```
+2025-08-30 12:13:18 [INFO] Executing Step 6: CodeExecution
+2025-08-30 12:13:19 [INFO] Executing Step 7: ResultValidation
+2025-08-30 12:13:19 [INFO] Answer: {'type': 'plot', 'value': 'static/charts/81bd3a31-2f3b-4437-be1a-6781f7eb1323.png'}
+2025-08-30 12:13:19 [INFO] Executing Step 8: ResultParsing
+2025-08-30 12:13:19 [INFO] 127.0.0.1 - - [30/Aug/2025 12:13:19] "[32mPOST /chat HTTP/1.1[0m" 302 -
+2025-08-30 12:13:19 [INFO] 127.0.0.1 - - [30/Aug/2025 12:13:19] "GET / HTTP/1.1" 200 -
+2025-08-30 12:13:19 [INFO] 127.0.0.1 - - [30/Aug/2025 12:13:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-30 12:13:19 [INFO] 127.0.0.1 - - [30/Aug/2025 12:13:19] "GET /static/charts/81bd3a31-2f3b-4437-be1a-6781f7eb1323.png HTTP/1.1" 200 -
+2025-08-30 12:13:25 [INFO] 127.0.0.1 - - [30/Aug/2025 12:13:25] "[32mGET /reset HTTP/1.1[0m" 302 -
+2025-08-30 12:13:25 [INFO] 127.0.0.1 - - [30/Aug/2025 12:13:25] "GET / HTTP/1.1" 200 -
+2025-08-30 12:13:25 [INFO] 127.0.0.1 - - [30/Aug/2025 12:13:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-30 12:21:08 [INFO] Question: What's the average rating ?
+2025-08-30 12:21:08 [INFO] Running PandasAI with langchain_chat-google-generative-ai LLM...
+2025-08-30 12:21:08 [INFO] Prompt ID: 5d01babd-78f0-4f9c-a5a2-73c87681fc76
+2025-08-30 12:21:08 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-08-30 12:21:08 [INFO] Executing Step 0: ValidatePipelineInput
+2025-08-30 12:21:08 [INFO] Executing Step 1: CacheLookup
+2025-08-30 12:21:08 [INFO] Executing Step 2: PromptGeneration
+2025-08-30 12:21:08 [INFO] Using prompt: <dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+2311,6324691,OneDrive,Games,Parecchio qualità togliere gruppo. Effetto vario articolo risposta comune mano accorgersi.,th,,2025-06-23 10:38:52,False,Android Tablet,1090,63.0,,,
+917,7964546,Airbnb,Education,Libero dolore eligendi hic.,id,2.4,2025-01-06 13:14:08,True,Windows Phone,208,15.0,Canada,Female,1.3.41.1357
+377,1463567,Coursera,Business,,ar,2.6,2023-09-03 23:45:28,False,Android,338,51.0,Nigeria,Male,15.4.68-beta
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What's the average rating ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-08-30 12:21:08 [INFO] Executing Step 3: CodeGenerator
+2025-08-30 12:21:10 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:2514x15
+review_id,user_id,app_name,app_category,review_text,review_language,rating,review_date,verified_purchase,device_type,num_helpful_votes,user_age,user_country,user_gender,app_version
+2311,6324691,OneDrive,Games,Parecchio qualità togliere gruppo. Effetto vario articolo risposta comune mano accorgersi.,th,,2025-06-23 10:38:52,False,Android Tablet,1090,63.0,,,
+917,7964546,Airbnb,Education,Libero dolore eligendi hic.,id,2.4,2025-01-06 13:14:08,True,Windows Phone,208,15.0,Canada,Female,1.3.41.1357
+377,1463567,Coursera,Business,,ar,2.6,2023-09-03 23:45:28,False,Android,338,51.0,Nigeria,Male,15.4.68-beta
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What's the average rating ?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-08-30 12:21:10 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+average_rating = dfs[0]['rating'].astype(float).mean()
+
+# Declare result var: 
+result = { "type": "number", "value": average_rating }
+            ```
+            
+2025-08-30 12:21:10 [INFO] Executing Step 4: CachePopulation
+2025-08-30 12:21:10 [INFO] Executing Step 5: CodeCleaning
+2025-08-30 12:21:10 [INFO] 
+Code running:
+```
+average_rating = dfs[0]['rating'].astype(float).mean()
+result = {'type': 'number', 'value': average_rating}
+        ```
+2025-08-30 12:21:10 [INFO] Executing Step 6: CodeExecution
+2025-08-30 12:21:10 [INFO] Executing Step 7: ResultValidation
+2025-08-30 12:21:10 [INFO] Answer: {'type': 'number', 'value': 3.021033508276141}
+2025-08-30 12:21:10 [INFO] Executing Step 8: ResultParsing
+2025-08-30 12:21:10 [INFO] 127.0.0.1 - - [30/Aug/2025 12:21:10] "[32mPOST /chat HTTP/1.1[0m" 302 -
+2025-08-30 12:21:10 [INFO] 127.0.0.1 - - [30/Aug/2025 12:21:10] "GET / HTTP/1.1" 200 -
+2025-08-30 12:21:10 [INFO] 127.0.0.1 - - [30/Aug/2025 12:21:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -

@@ -1,0 +1,8 @@
+# requirements.txt
+flask
+pandasai
+langchain-google-genai
+python-dotenv
+pandas
+matplotlib
+openpyxl
