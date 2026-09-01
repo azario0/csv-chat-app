@@ -117,6 +117,10 @@ Follow these instructions to get the project running on your local machine.
 └── requirements.txt      # Python dependencies
 ```
 
+## Tutorial
+
+https://softwarejournal.blog/blog/chat-with-your-csv-flask-pandasai-gemini/
+
 ## 📄 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
